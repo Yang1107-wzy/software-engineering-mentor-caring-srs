@@ -1,0 +1,578 @@
+\documentclass[a4paper,12pt]{article}
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{times}
+\usepackage[top=1.2in,bottom=1in,left=1in,right=1in,headheight=28pt,headsep=14pt]{geometry}
+\usepackage{graphicx}
+
+\usepackage{float} % for figure placement specifier [H]
+\usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{parskip}
+\usepackage{amssymb}
+\usepackage[titles]{tocloft}
+\usepackage{hyperref}
+
+% ---- Header/Footer setup (matching Word: two-line header, no rule) ----
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\parbox[b]{\textwidth}{\footnotesize\textbf{\textit{Software Requirements Specification for Design and Implementation of a Mentor Caring System}}\\[2pt]\mbox{}\hfill\textbf{\textit{Page \thepage}}}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---- Section heading formatting (matching Word style) ----
+% Section: e.g. "1. Introduction" 18pt bold
+\titleformat{\section}{\normalfont\fontsize{18}{22}\bfseries}{\thesection.\quad}{0pt}{}
+\titlespacing*{\section}{0pt}{24pt}{12pt}
+% Subsection: e.g. "1.1 Purpose" 14pt bold
+\titleformat{\subsection}{\normalfont\fontsize{14}{17}\bfseries}{\thesubsection\quad}{0pt}{}
+\titlespacing*{\subsection}{0pt}{18pt}{8pt}
+% Subsubsection: e.g. "3.1.1 Description and Priority" 12pt bold
+\titleformat{\subsubsection}{\normalfont\fontsize{12}{15}\bfseries}{\thesubsubsection\quad}{0pt}{}
+\titlespacing*{\subsubsection}{0pt}{12pt}{6pt}
+
+% ---- TOC formatting (matching Word: bold for sections, indentation for subsections) ----
+\renewcommand{\cftsecfont}{\bfseries}
+\renewcommand{\cftsecpagefont}{\bfseries}
+\setlength{\cftsubsecindent}{2em}
+\setlength{\cftsubsubsecindent}{4em}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% Body text: 12pt, single spacing (matching Word)
+\setstretch{1.15}
+
+% Graphics path
+\graphicspath{{images/}{ver1.2_transitionDiagram/}{ver1.3_Sequence diagrams and class diagrams/}}
+
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black
+}
+
+\begin{document}
+
+%--------------------------------------------------------------
+% Title Page (matching Word layout: thick top rule, left-aligned title, right-aligned metadata)
+%--------------------------------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\vspace*{0.5cm}
+
+% Thick horizontal rule at top
+\noindent\rule{\textwidth}{3pt}
+
+\vspace{1.5cm}
+
+% Title block left aligned, large bold
+{\fontsize{26}{31}\selectfont\bfseries\raggedright
+Software Requirements Specification\par}
+
+\vspace{0.8cm}
+
+{\fontsize{14}{17}\selectfont\bfseries\raggedright
+for\par}
+
+\vspace{0.8cm}
+
+{\fontsize{26}{31}\selectfont\bfseries\raggedright
+Design and Implementation of a Mentor Caring System\par}
+
+\vfill
+
+% Right-aligned metadata block
+\begin{flushright}
+{\fontsize{12}{15}\selectfont\bfseries
+Version 1.3 \textit{approved}\\[1cm]
+Prepared by\\
+Wang Zhengyang 2330031281 FULL\\
+Zhang Yaling 2330026222 FULL\\
+Chen Zhengyang 2330024028 FULL\\
+Liu Boyu 2330016025 FULL\\
+Li Jinshang 2230026075 FULL\\
+Wang Weihang 2230026157 FULL\\[0.8cm]
+Group B04\\[0.5cm]
+2026/4/4
+}
+\end{flushright}
+
+\vspace{1cm}
+\end{titlepage}
+
+%--------------------------------------------------------------
+% Table of Contents
+%--------------------------------------------------------------
+\newpage
+\thispagestyle{fancy}
+\setcounter{page}{2}
+\renewcommand{\thepage}{\roman{page}}
+
+% "Table of Contents" heading matching Word style
+\renewcommand{\contentsname}{\fontsize{18}{22}\selectfont\bfseries Table of Contents}
+\tableofcontents
+
+\vspace{1cm}
+
+%--------------------------------------------------------------
+% Revision History
+%--------------------------------------------------------------
+% Revision History
+\section*{Revision History}
+\addcontentsline{toc}{section}{Revision History}
+
+\begin{longtable}{|p{3.5cm}|p{2cm}|p{6cm}|p{2cm}|}
+\hline
+\textbf{Name} & \textbf{Date} & \textbf{Reason For Changes} & \textbf{Version} \\
+\hline
+Li Jinshang,\newline
+Zhang Yaling,\newline
+Liu Boyu,\newline
+Wang Zhengyang,\newline
+Chen Zhengyang
+&
+2026-03-12
+&
+Basic SRS file implementation\newline
+Context model and Use case diagram first design
+&
+1.0 \\
+\hline
+Li Jinshang,\newline
+Zhang Yaling,\newline
+Liu Boyu,\newline
+Wang Zhengyang,\newline
+Chen Zhengyang\newline
+Wang Weihang
+&
+2026-03-19
+&
+Section 3 Use Case updated\newline
+Section 4 UI Reference released\newline
+Section 5 old problems fixed
+&
+1.1 \\
+\hline
+Liu Boyu,\newline
+Li Jinshang,\newline
+Zhang Yaling,\newline
+Wang Zhengyang,\newline
+Chen Zhengyang\newline
+Wang Weihang
+&
+2026-03-28
+&
+State transition diagrams created for all use cases\newline
+UI diagrams created for all use cases\newline
+Basic scenarios created for all use cases
+&
+1.2 \\
+\hline
+Liu Boyu,\newline
+Li Jinshang,\newline
+Zhang Yaling,\newline
+Wang Zhengyang,\newline
+Chen Zhengyang\newline
+Wang Weihang
+&
+2026-04-04
+&
+Appendix B Sequence Diagram updated\newline
+Appendix B Class Diagram updated\newline
+ID mappings for the UI and other diagrams fixed
+&
+1.3 \\
+\hline
+\end{longtable}
+
+%--------------------------------------------------------------
+% Switch to Arabic page numbering
+%--------------------------------------------------------------
+\clearpage
+\setcounter{page}{1}
+\renewcommand{\thepage}{\arabic{page}}
+
+%--------------------------------------------------------------
+% 1. Introduction
+%--------------------------------------------------------------
+% Section 1: Introduction
+\section{Introduction}
+
+\subsection{Purpose}
+
+This document specifies the software requirements for the Mentor Caring System (MCS) V1.0 developed for the BNBU Mentor Caring Programme. It fully covers all core functional and non-functional requirements of the MCS, including the functional permissions of all role users, data interaction rules, system operation processes and basic interface requirements. This SRS is a complete specification for the entire MCS system and does not involve only a part or a single subsystem of the overall system, serving as the fundamental basis for the subsequent design, development, testing, and acceptance of the MCS.
+
+\subsection{Document Conventions}
+
+\begin{enumerate}
+\item \textbf{Font and Highlighting Conventions:} Key system roles (e.g., \textbf{Administrator}, \textbf{Faculty Consultant}), core functions (e.g., \textbf{Allocate Mentors}, \textbf{Generate Summary Report}) and special terms (e.g., \textbf{Mentor Caring System}, \textbf{MCS}) are marked in bold for emphasis; file formats (e.g., \textit{Excel}, \textit{Word}) and data fields (e.g., \textit{Student ID}, \textit{Group ID}) are marked in italic.
+
+\item \textbf{Requirement Priority Inheritance:} The priority of detailed functional requirements is inherited from the higher-level module requirements where they are located. The overall requirements of the MCS are divided into three priority levels: High (core and indispensable functions for the operation of the Mentor Caring Programme), Medium (auxiliary functional requirements for improving system usability), and Low (optimization requirements for functional experience, implementable in follow-up versions). If an individual detailed requirement has a different priority from its higher-level module, it will be marked independently in the corresponding section.
+
+\item \textbf{Numbering Conventions:} The document adopts a hierarchical numbering system (e.g., 1, 1.1, 1.1.1) for chapters, sections and specific requirements; functional goal serial numbers use Arabic numerals with parentheses (e.g., 1), and operational step serial numbers use lowercase Arabic numerals with periods (e.g., 1.).
+
+\item \textbf{Nomenclature Conventions:} The full name \textbf{Mentor Caring System} is used for the first mention in each chapter, followed by the abbreviation \textbf{MCS} for subsequent references; all role and function names are consistent with the definitions in the BNBU Mentor Caring Programme official description.
+\end{enumerate}
+
+\subsection{Intended Audience and Reading Suggestions}
+
+This document is intended for multiple stakeholders involved in the Mentor Caring System (MCS), including software developers, project managers, system testers, BNBU end users (administrators, faculty consultants, mentors, etc.), system maintainers and documentation writers.
+
+The remainder of this SRS is organized in a logical, hierarchical structure from overall system overview to detailed technical requirements. Chapter 2 presents the overall description of the product, including its perspective, core features, user classes, operating environment and key assumptions. Chapter 3 details the specific system features that realize the product's core functions. Chapter 4 specifies all external interface requirements, covering user, hardware, software and communications interfaces. Chapter 5 outlines nonfunctional requirements such as performance, safety, security and software quality attributes. Chapter 6 lists other supplementary requirements, and the appendices provide a glossary, analysis models and an issues list for reference.
+
+For a structured reading experience, all readers are recommended to start with Chapter 1 (Introduction) to grasp the basic background, purpose and scope of the MCS. End users may then focus on Chapter 2 (Overall Description) to understand the system's core features and role-based functions, and may skip the technical details in subsequent chapters. Developers and testers should read the full document in sequence, with key focus on Chapter 3 (System Features), Chapter 4 (External Interface Requirements) and Chapter 5 (Nonfunctional Requirements) to guide system design, development and testing. Project managers should prioritize Chapter 1, Chapter 2 and the priority of requirements across the document to plan project progress and resource allocation. Documentation writers and system maintainers should review the entire SRS, with additional attention to the appendices and detailed functional specifications to compile user manuals and support post-launch system maintenance.
+
+\subsection{Project Scope}
+
+The Mentor Caring System (MCS) is a dedicated supporting management system for BNBU's Mentor Caring Programme, which digitizes the programme's management by realizing mentor allocation, interview record reporting, appointment arrangement, summary report generation and information tracking, and interfaces with the existing school database to assign differentiated permissions for all relevant roles, aligning with BNBU's goal of improving the informatization level of student management work.
+
+\subsection{References}
+
+\begin{enumerate}
+\item project description MCS long version [SE\_SDW\_Project Long Description 2025-2026-2 V.1.0]
+\end{enumerate}
+
+%--------------------------------------------------------------
+% 2. Overall Description
+%--------------------------------------------------------------
+% Section 2: Overall Description
+\section{Overall Description}
+
+\subsection{Product Perspective}
+
+The Mentor Caring System (MCS) is a new, self-contained software product developed exclusively for the BNBU Mentor Caring Programme, which aims to digitalize and standardize the management of the programme's daily operations and related activities for all undergraduate students of BNBU. This system is an independent supporting management tool and not a follow-on product of any existing software series, nor a replacement for other school information systems.
+
+MCS interfaces with the existing BNBU school database (which stores staff and students' accounts, passwords, names and role attributes) to realize unified user identity authentication. It does not act as a component of a larger system, and all core functions (e.g., mentor allocation, interview record management, appointment arrangement) are built within the independent MCS framework. The system only interacts with the BNBU school database for data reading and verification during user login, without modifying or managing the original data of the school database.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.5\textwidth]{context_model.png}
+\caption{Context model of the Mentor Caring System}
+\label{fig:main-context-model}
+\end{figure}
+
+\subsection{Product Features}
+
+MCS is built around the core goals of the BNBU Mentor Caring Programme, providing role-based differentiated functional modules to realize the full-process digital management of the programme. The high-level core features are summarized as follows, with detailed specifications in Section 3:
+
+\begin{sloppypar}
+\begin{enumerate}
+\item \textbf{Role Management \& Permission Allocation:} Supports hierarchical permission setting for six user roles, realizes unified identity authentication via the BNBU school database, and allows flexible configuration of the school's faculty-department-major organizational architecture (manual/Excel import).
+
+\item \textbf{Mentor \& Student Allocation Management:} Facilitates batch import of mentor-student allocation information via Excel, supports manual adjustment of group mentors and group student members, and retains all historical information of students during any adjustment operation.
+
+\item \textbf{Information Query \& Statistics:} Provides multi-dimensional search functions for student, mentor and system log information (supporting precise and conditional screening), and enables batch export of specified information to Word files based on academic year, department, mentor and student name.
+
+\item \textbf{Interview Management:} Supports mentors to add, modify and delete interview records of their supervised students, and allows batch export of interview records to Word files for statistical and archival purposes.
+
+\item \textbf{Online Communication \& Appointment:} Realizes two-way text communication between different roles, and supports the mentor-student interview appointment function (including mentor-set available time slots, venue confirmation and email notification for both parties).
+
+\item \textbf{Special Case Processing:} Establishes a tiered forwarding mechanism for student special cases, from mentors to MCP coordinators and then to faculty consultants, to ensure timely follow-up of key student issues.
+
+\item \textbf{System Log Monitoring:} Records the login/logout time and core function usage of all users, and provides log query and viewing permissions for designated roles to track system operation status.
+\end{enumerate}
+\end{sloppypar}
+
+The Mentor Caring System (MCS) provides a centralized digital platform to support the BNBU Mentor Caring Programme. The system organizes its major functions into several groups of related capabilities.
+
+First, the system supports role-based access control and identity authentication through the BNBU school database, ensuring that administrators, faculty consultants, mentors, students, MCP coordinators and supporting staff can access functions according to their permissions.
+
+Second, the system manages mentor--student allocation and organizational structures, allowing faculty consultants to import or modify information about faculties, departments, majors, mentoring groups and student membership through Excel templates or manual operations.
+
+Third, the system provides information management and query services, enabling users to search student records, mentor information and system logs, and export selected records into Word documents for reporting and archiving.
+
+Fourth, the system supports interview record management and appointment scheduling between mentors and students. Mentors can create, modify or delete interview records and arrange available appointment time slots for students.
+
+Finally, the system enables internal communication among different user roles through text messages and notifications, including forwarding special student cases from mentors to MCP coordinators and faculty consultants for further follow-up.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{usecase_fig1.png}
+\caption{Use Case Diagram: Mentor, Student and Coordinator}
+\label{fig:main-usecase-fig1}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{usecase_fig2_fig3.png}
+\caption{Use Case Diagram: Administrator, Faculty Consultant and Supporting Staff}
+\label{fig:main-usecase-fig2-fig3}
+\end{figure}
+
+\subsection{User Classes and Characteristics}
+
+MCS is designed for six distinct user classes, differentiated by security/privilege levels, subset of product functions used and frequency of use, all of whom access the system via BNBU's unified account authentication. Core user classes and their pertinent characteristics are as follows, with faculty consultants and mentors as the favored user classes (the main daily operators of the system):
+
+\begin{enumerate}
+\item \textbf{Administrator}
+\begin{itemize}
+\item Privilege Level: Highest system privilege; only 1 user for the entire university.
+\item Core Characteristics: Non-technical or technical background (BNBU school management staff); low frequency of system use (mainly for initial setup and occasional maintenance).
+\item Key Functions: Designate/modify/delete faculty consultants, configure organizational architecture (faculty-department-major), set up supporting staff.
+\item Unique Constraints: Cannot act as a mentor in the system.
+\end{itemize}
+
+\item \textbf{Faculty Consultant}
+\begin{itemize}
+\item Privilege Level: High; one or more per BNBU faculty (FST, FHSS, FSM, DCC).
+\item Core Characteristics: Faculty management staff with familiarity with Excel operation; medium-to-high frequency of use (key operation at the start of each academic year, regular daily maintenance).
+\item Key Functions: The core manager of the faculty-level MCS, responsible for mentor-student allocation import, group adjustment, MCP coordinator designation, multi-dimensional information search/export and cross-role communication.
+\item Favored User Class: Primary daily operator of the system, core to the normal operation of the Mentor Caring Programme.
+\end{itemize}
+
+\item \textbf{Mentor}
+\begin{itemize}
+\item Privilege Level: Medium; assigned to mentor groups for undergraduate students.
+\item Core Characteristics: BNBU teaching staff; high frequency of use (daily communication with students, interview record management, regular appointment arrangement).
+\item Key Functions: Restricted to operating on their own supervised groups, including student information query, interview record editing, mentor-student communication/appointment, special case forwarding and interview record export.
+\item Favored User Class: The most frequent operator of the system, the direct executor of the Mentor Caring Programme's core work.
+\end{itemize}
+
+\item \textbf{Student}
+\begin{itemize}
+\item Privilege Level: Low; all BNBU undergraduate students in mentor groups.
+\item Core Characteristics: Non-technical background; variable use frequency (mainly for checking mentor information, responding to messages/appointments).
+\item Key Functions: View personal mentor's basic information, two-way communication and interview appointment with the mentor.
+\item Unique Constraints: Cannot access the system if not assigned to any mentor group (system displays a warning and forces logout).
+\end{itemize}
+
+\item \textbf{MCP Coordinator}
+\begin{itemize}
+\item Privilege Level: Medium; one per BNBU department, designated by faculty consultants.
+\item Core Characteristics: Department management staff; medium frequency of use (mainly for special case forwarding and cross-role communication).
+\item Key Functions: Search mentor/student information, forward student special cases from mentors to faculty consultants, and two-way communication with students, faculty consultants and mentors.
+\item Flexible Attribute: May concurrently hold the role of a mentor for a mentor group.
+\end{itemize}
+
+\item \textbf{Supporting Staff}
+\begin{itemize}
+\item Privilege Level: Low; designated by the administrator (optional role).
+\item Core Characteristics: School administrative staff; low frequency of use (auxiliary system management).
+\item Key Functions: View all students' log information, respond to user feedback on system usage (the latter function is non-mandatory).
+\end{itemize}
+\end{enumerate}
+
+\subsection{Operating Environment}
+
+\textbf{Server-side Environment}
+
+The Mentor Caring System (MCS) shall be deployed on a standard enterprise-level server capable of hosting a web application and a dedicated relational database. The server must maintain a stable network connection to the BNBU school database server for user identity verification and to the BNBU email server for automatic notification delivery. The specific server hardware configuration and operating system shall be determined during the system design phase based on the expected scale of university-wide usage.
+
+\textbf{Recommended Configuration}
+
+Hardware Platform: Enterprise-level server (CPU: Intel Xeon Silver/Gold or equivalent or above; RAM: 32GB or above; Hard Disk: 1TB SSD or above) with high-speed and stable network connectivity.
+
+Operating System: Enterprise-grade Linux distribution (such as Rocky Linux 8/9 or Ubuntu Server 20.04/22.04 LTS) or Windows Server 2022 (64-bit).
+
+Supporting Software: Relational database management system (MySQL 8.0 latest stable version / SQL Server 2019 or above); Web server (Nginx 1.20 or above / Apache Tomcat 9.0 or above).
+
+\textbf{Client-side Environment}
+
+\begin{sloppypar}
+Users shall access the system through standard personal computers (desktops or laptops) equipped with mainstream modern web browsers. Client devices must have basic network access to the BNBU internal campus network, or external network access through the university's VPN\@ service. Users are also required to have Microsoft Excel (for importing and editing system-related data files as specified in Appendix A--D) and Microsoft Word (for viewing and editing exported report files) installed on their devices.
+\end{sloppypar}
+
+\textbf{Recommended Configuration}
+
+Hardware Platform: Personal computer with Intel i5 / AMD Ryzen 5 or above, RAM 8GB or above, SSD storage and stable broadband network connection.
+
+Operating System: Windows 11 (64-bit) or macOS 13 or above.
+
+Browser: Latest stable versions of Chrome, Edge or Firefox.
+
+Supporting Software: Microsoft Office 2019 / Microsoft 365 or above.
+
+\textbf{Coexistence Requirements}
+
+The system must peacefully coexist with the existing BNBU school database system and the school's email server (for sending system message notifications), without occupying excessive system resources or affecting the normal operation of other BNBU internal information systems.
+
+\subsection{Design and Implementation Constraints}
+
+The design and implementation of MCS are subject to the following constraints, which limit the development options for the development team:
+
+\begin{enumerate}
+\item \textbf{Functional Adaptability Constraint:} The system must support the dynamic addition of new faculties in BNBU without modifying the core code, to adapt to the school's future organizational structure adjustments.
+\item \textbf{Data Retention Constraint:} All student information (including personal data, interview records, group history) must be permanently retained in the system; no data deletion is allowed for any operation (e.g., removing a student from a group, changing a group's mentor).
+\item \textbf{Data Interaction Constraint:} The system can only read data from the BNBU school database (for user authentication) and cannot modify, delete or store any original data of the school database; all system-specific data (e.g., mentor-student allocation, interview records) must be stored in MCS's independent database.
+\item \textbf{File Format Constraint:} The system must strictly support the Excel/Word file formats specified in the BNBU Mentor Caring Programme appendices (Appendix A-D) for data import and export; no custom non-standard file formats are allowed.
+\item \textbf{Message Notification Constraint:} All system internal messages (e.g., communication, appointment) must trigger an automatic email notification to the receiver via the BNBU email server; receivers can only view and respond to messages after logging into the system.
+\item \textbf{Appointment Time Constraint:} The mentor-student interview appointment function must set available time slots in 30-minute fixed intervals; no custom time slot durations are supported.
+\item \textbf{Permission Isolation Constraint:} Mentors can only access and operate data related to their own supervised groups; no cross-group data access is allowed, and the system must strictly enforce role-based access control (RBAC) for all user classes.
+\item \textbf{Maintainability Constraint:} The system code must follow standard software development programming norms (e.g., modular design, detailed code comments) to facilitate subsequent maintenance and version iteration by BNBU's technical staff.
+\item \textbf{Excel Import Constraint:} When importing Excel files into the system, existing information in the system must not be overwritten; only non-existing information is updated, and the import logic must follow this rule for all Excel-based data operations.
+\end{enumerate}
+
+\subsection{User Documentation}
+
+The following user documentation components will be delivered along with the MCS software, all complying with BNBU's internal information system documentation standards and the general software user manual writing norms. All documents will be provided in both electronic (PDF format) and editable (Word format) versions, and published on the BNBU internal system platform for easy access by all users:
+
+\begin{enumerate}
+\item \textbf{MCS Quick Start Guide:} A concise document for all user classes, including basic system access steps, account authentication instructions, core function operation shortcuts and common problem troubleshooting (1-2 pages for quick reference).
+
+\item \textbf{MCS Detailed User Manual:} A comprehensive document classified by user roles, including detailed step-by-step operation instructions for all functions, screenshot demonstrations of key operations, file format specifications (Appendix A-D) and system error code explanations. Separate chapters are provided for each role to ensure targeted readability.
+
+\item \textbf{MCS Administrator Maintenance Manual:} A dedicated document for the system administrator, including organizational architecture configuration, role permission setting, supporting staff management, system log viewing and basic system maintenance operations (e.g., data backup, Excel template update).
+
+\item \textbf{MCS File Template Package:} A compressed package containing the standard Excel templates for Appendix A (organizational architecture), Appendix B (mentor-student allocation) and Appendix C (MCP coordinator designation), with built-in data validation rules to ensure user input compliance.
+\end{enumerate}
+
+\subsection{Assumptions and Dependencies}
+
+\textbf{Assumptions}
+
+The following assumed factors (not yet verified as absolute facts) affect the requirements and implementation of MCS; if these assumptions are incorrect, unshared or changed, the project development and system operation will be impacted:
+
+\begin{enumerate}
+\item The BNBU school database is permanently available and stably connected during the entire operation period of MCS, and provides a fixed data interface for MCS to read user account, password, name and role information.
+\item The BNBU email server is always operational and supports the system's automatic email notification function; the server has no sending frequency or content restrictions for internal school email notifications.
+\item All MCS users (especially faculty consultants and mentors) have basic computer operation skills and are proficient in using Microsoft Excel and Word (the core office software for the system).
+\item BNBU will not adjust the core attributes of the user account (e.g., student ID, staff email) during the system operation period; any account attribute adjustment will be notified to the development team in advance.
+\item The non-mandatory function of ``supporting staff responding to user feedback'' will not require additional integration with BNBU's feedback system; the supporting staff only needs to process feedback via manual record within MCS.
+\end{enumerate}
+
+\textbf{Dependencies}
+
+The development and operation of MCS have the following key external dependencies, which are essential for the realization of core system functions:
+
+\begin{enumerate}
+\item \textbf{BNBU School Database Interface:} The system is dependent on the provision of a valid, read-only data interface by the BNBU Information Technology Center; without this interface, the unified user identity authentication function cannot be realized.
+\item \textbf{BNBU Email Server Service:} The system is dependent on the BNBU email server to provide SMTP/POP3 services for automatic message notification; the interruption of this service will result in the failure of the email notification function for communication and appointments.
+\item \textbf{Microsoft Office Software:} The system's data import/export function is dependent on the mainstream Microsoft Office (Excel/Word) software used by all BNBU users; the system does not support other office software with incompatible file formats.
+\item \textbf{BNBU Internal Network Environment:} The system's core data interaction (e.g., accessing the school database) is dependent on the stability of the BNBU internal campus network; external network access requires the school's VPN service to ensure secure and stable connection to the system server.
+\end{enumerate}
+
+%--------------------------------------------------------------
+% 3. Use Case
+%--------------------------------------------------------------
+\input{sections/section3_use_case}
+
+% 4. External Interface Requirements
+%--------------------------------------------------------------
+% Section 4: External Interface Requirements
+\section{External Interface Requirements}
+
+\subsection{User Interfaces}
+
+Please refer to the separate document named `B04 Section3 UI\_Diagrams.pdf' for all user interface designs corresponding to the state transition diagrams.
+
+\subsection{Hardware Interfaces}
+
+The Mentor Caring System primarily operates on standard computing equipment and does not require any specialized hardware devices.
+
+Users shall interact with the system through ordinary personal computers or laptops using common input and output devices such as keyboards, mice, and displays.
+
+On the server side, the system shall be hosted on standard server hardware that supports the execution of the web application, storage of system data, and communication with external university services. The system shall also rely on normal network infrastructure to enable communication between client devices, the MCS server, the BNBU school database, and the BNBU email service.
+
+The system does not directly control or manipulate external hardware devices. All hardware interaction shall be limited to ordinary web-based input, display, storage, and network communication functions. This is aligned with the project description, which presents MCS as a supporting management system rather than a hardware control system.
+
+\subsection{Software Interfaces}
+
+The Mentor Caring System interacts with several external software components that support its operation:
+
+\textbf{BNBU School Database System:} Provides user authentication information including account ID, password, user name and role type. The MCS accesses this database in read-only mode for login verification.
+
+\textbf{Relational Database Management System:} The system stores its operational data (mentor allocation, interview records, communication messages and logs) in a dedicated database such as MySQL 8.0 or Microsoft SQL Server 2019.
+
+\textbf{Web Server Software:} Application deployment is supported by web servers such as Nginx or Apache Tomcat, which manage HTTP requests, session management and application service execution.
+
+\textbf{Email Server System:} The BNBU email server is used to send automatic notification emails whenever a system message or interview appointment is created.
+
+\textbf{Office Software Integration:} Microsoft Excel is used for importing structured data such as student lists and mentor allocations, while Microsoft Word is used for exporting reports and interview records.
+
+\subsection{Communications Interfaces}
+
+The Mentor Caring System relies on standard network communication technologies to support user access and system messaging:
+
+\textbf{Web Communication:} Users shall access the system interfaces through a standard secure web network connection (such as HTTPS).
+
+\textbf{Email Notification Service:} The system shall communicate with the BNBU email service using standard mail transport protocols to automatically send notifications to the receiving parties.
+
+\textbf{Network Access:} Internal users can access the system via the BNBU campus network, while external access shall rely on the university's existing secure network access arrangements (such as a campus VPN).
+
+%--------------------------------------------------------------
+% 5. Other Nonfunctional Requirements
+%--------------------------------------------------------------
+% Section 5: Other Nonfunctional Requirements
+\section{Other Nonfunctional Requirements}
+
+\subsection{Performance Requirements}
+
+The Mentor Caring System must meet the following measurable performance requirements:
+
+\textbf{System Response Time:}
+
+The system shall return results for common user operations (including login verification, student/mentor information search, and message viewing) within 2 seconds under normal network conditions ($\leq$200 ms latency, stable campus network).
+
+\textbf{Concurrent Users:}
+
+The system shall support at least 300 concurrent users during peak usage periods (e.g., mentor allocation period at the beginning of the academic year) without performance degradation (i.e., response time shall not exceed 3 seconds for 95\% of requests).
+
+\textbf{File Import/Export Performance:}
+
+The system shall complete batch Excel file import (up to 1000 records per file) within 5 seconds, and generate/export Word reports (up to 100 pages) within 10 seconds under normal system load.
+
+\textbf{System Availability:}
+
+The system shall achieve at least 99\% uptime during normal academic operation periods (excluding scheduled maintenance), and any single system downtime shall not exceed 30 minutes.
+
+\subsection{Safety Requirements}
+
+No specific safety requirements are defined for the Mentor Caring System, as the system does not involve any hardware control or safety-critical operations.
+
+\subsection{Security Requirements}
+
+Security is critical for protecting sensitive academic and personal information stored in the Mentor Caring System.
+
+\textbf{User Authentication:} All users must log in using their BNBU university accounts verified through the school database.
+
+\textbf{Role-Based Access Control:} Access to system functions must be strictly controlled according to user roles (administrator, faculty consultant, mentor, student, MCP coordinator, supporting staff).
+
+\textbf{Data Privacy Protection:} Student personal information, interview records and communication messages must only be accessible to authorized users.
+
+\textbf{Secure Communication:} All login sessions and sensitive data transfers must use encrypted HTTPS connections.
+
+\textbf{Log Monitoring:} The system must record login and logout times and major user actions for auditing and security monitoring purposes.
+
+\subsection{Software Quality Attributes}
+
+The Mentor Caring System must satisfy several important software quality attributes:
+
+\textbf{Usability:} The web interface should be intuitive and easy to use so that users with basic computer skills can operate the system without extensive training.
+
+\textbf{Reliability:} The system should operate continuously with minimal failures and should recover gracefully from unexpected errors.
+
+\textbf{Maintainability:} The system architecture should follow modular design principles and include clear documentation and code comments to facilitate future maintenance.
+
+\textbf{Scalability:} The system should allow the addition of new faculties, departments and users without major structural modifications.
+
+\textbf{Portability:} The web-based architecture ensures that the system can run on multiple operating systems and browsers.
+
+\textbf{Testability:} Functional modules should be designed so that they can be independently tested during development and quality assurance.
+
+%--------------------------------------------------------------
+% 6. Other Requirements
+%--------------------------------------------------------------
+% Section 6: Other Requirements
+\section{Other Requirements}
+
+\textbf{Database Requirements:} The system must maintain an independent database storing mentor groups, student information, interview records, communication messages and system logs.
+
+\textbf{Data Retention Policy:} Historical records of mentor allocations and interview reports must be permanently retained for management and auditing purposes.
+
+\textbf{Legal and Policy Compliance:} The system must comply with BNBU information management policies and relevant regulations on data protection and privacy.
+
+\textbf{Future Expansion Considerations:} The system design should allow future integration with other BNBU information systems such as student management platforms or learning management systems.
+
+%--------------------------------------------------------------
+% Appendices
+\input{sections/appendices}
+\end{document}

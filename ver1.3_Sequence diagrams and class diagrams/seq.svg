@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1546" height="1217" viewBox="-10 -10 1546 1217">
+  <rect width="100%" height="100%" fill="white"/>
+  <rect x="70.0" y="95.0" width="1376.0" height="49.0" rx="6" ry="6" fill="#ffff88" stroke="#9E916F" stroke-width="1.6"/>
+  <text x="84.0" y="115.0" font-family="Helvetica, Arial, sans-serif" font-size="14" font-weight="700" fill="#333333"><tspan x="84.0" dy="0">Assumption: Mentor is logged in and on Home Page</tspan><tspan x="84.0" dy="18">(1A)</tspan></text>
+
+  <circle cx="37.5" cy="34.0" r="8" fill="none" stroke="#999999" stroke-width="2"/>
+  <line x1="37.5" y1="42.0" x2="37.5" y2="66.0" stroke="#999999" stroke-width="2"/>
+  <line x1="25.5" y1="50.0" x2="49.5" y2="50.0" stroke="#999999" stroke-width="2"/>
+  <line x1="37.5" y1="66.0" x2="27.5" y2="82.0" stroke="#999999" stroke-width="2"/>
+  <line x1="37.5" y1="66.0" x2="47.5" y2="82.0" stroke="#999999" stroke-width="2"/>
+  <text x="37.5" y="74.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#999999">Mentor</text>
+
+  <line x1="37.5" y1="98.0" x2="37.5" y2="1157.0" stroke="#999999" stroke-width="1.8" stroke-dasharray="8 7"/>
+
+  <rect x="351.0" y="20.0" width="207.0" height="52.0" rx="6" ry="6" fill="#eeeeee" stroke="#999999" stroke-width="1.8"/>
+  <text x="454.5" y="42.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#333333"><tspan x="454.5" dy="0">:SearchStudentsInfoP</tspan><tspan x="454.5" dy="18">age</tspan></text>
+
+  <line x1="454.5" y1="74.0" x2="454.5" y2="1157.0" stroke="#999999" stroke-width="1.8" stroke-dasharray="8 7"/>
+
+  <rect x="637.0" y="20.0" width="150.0" height="40.0" rx="6" ry="6" fill="#eeeeee" stroke="#999999" stroke-width="1.8"/>
+  <text x="712.0" y="42.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#333333"><tspan x="712.0" dy="0">:MCSController</tspan></text>
+
+  <line x1="712.0" y1="74.0" x2="712.0" y2="1157.0" stroke="#999999" stroke-width="1.8" stroke-dasharray="8 7"/>
+
+  <rect x="859.0" y="20.0" width="150.0" height="40.0" rx="6" ry="6" fill="#eeeeee" stroke="#999999" stroke-width="1.8"/>
+  <text x="934.0" y="42.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#333333"><tspan x="934.0" dy="0">:StudentInfoDB</tspan></text>
+
+  <line x1="934.0" y1="74.0" x2="934.0" y2="1157.0" stroke="#999999" stroke-width="1.8" stroke-dasharray="8 7"/>
+
+  <rect x="1059.0" y="20.0" width="183.0" height="52.0" rx="6" ry="6" fill="#eeeeee" stroke="#999999" stroke-width="1.8"/>
+  <text x="1150.5" y="42.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#333333"><tspan x="1150.5" dy="0">:InterviewRecordStor</tspan><tspan x="1150.5" dy="18">e</tspan></text>
+
+  <line x1="1150.5" y1="74.0" x2="1150.5" y2="1157.0" stroke="#999999" stroke-width="1.8" stroke-dasharray="8 7"/>
+
+  <rect x="1346.0" y="20.0" width="150.0" height="40.0" rx="6" ry="6" fill="#eeeeee" stroke="#999999" stroke-width="1.8"/>
+  <text x="1421.0" y="42.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" font-weight="700" fill="#333333"><tspan x="1421.0" dy="0">:StudentInfoPage</tspan></text>
+
+  <line x1="1421.0" y1="74.0" x2="1421.0" y2="1157.0" stroke="#999999" stroke-width="1.8" stroke-dasharray="8 7"/>
+  <rect x="449.0" y="180.0" width="10.0" height="66.0" fill="#eeeeee" stroke="#999999" stroke-width="1.5"/>
+  <rect x="707.0" y="340.0" width="10.0" height="376.0" fill="#eeeeee" stroke="#999999" stroke-width="1.5"/>
+  <rect x="707.0" y="828.0" width="10.0" height="148.0" fill="#eeeeee" stroke="#999999" stroke-width="1.5"/>
+  <rect x="929.0" y="388.0" width="10.0" height="46.0" fill="#eeeeee" stroke="#999999" stroke-width="1.5"/>
+  <rect x="1146.0" y="492.0" width="10.0" height="46.0" fill="#eeeeee" stroke="#999999" stroke-width="1.5"/>
+  <rect x="1146.0" y="884.0" width="10.0" height="26.0" fill="#eeeeee" stroke="#999999" stroke-width="1.5"/>
+
+  <line x1="37.5" y1="180.0" x2="444.0" y2="180.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="454.0,180.0 444.0,175.0 444.0,185.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="245.8" y="162.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="245.8" dy="0">click &quot;Search Students&#x27;</tspan><tspan x="245.8" dy="16">Info&quot;</tspan></text>
+
+
+  <line x1="454.0" y1="236.0" x2="47.5" y2="236.0" stroke="#444444" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <polygon points="37.5,236.0 47.5,231.0 47.5,241.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="245.8" y="218.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="245.8" dy="0">display 2A. Search Students&#x27;</tspan><tspan x="245.8" dy="16">Info Page</tspan></text>
+
+
+  <line x1="37.5" y1="292.0" x2="444.5" y2="292.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="454.5,292.0 444.5,287.0 444.5,297.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="246.0" y="274.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="246.0" dy="0">enter studentID, click</tspan><tspan x="246.0" dy="16">Search</tspan></text>
+
+
+  <line x1="454.5" y1="340.0" x2="702.0" y2="340.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="712.0,340.0 702.0,335.0 702.0,345.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="583.2" y="330.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="583.2" dy="0">searchStudent(studentID)</tspan></text>
+
+
+  <line x1="712.0" y1="388.0" x2="924.0" y2="388.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="934.0,388.0 924.0,383.0 924.0,393.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="823.0" y="378.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="823.0" dy="0">query(studentID)</tspan></text>
+
+
+  <line x1="934.0" y1="444.0" x2="722.0" y2="444.0" stroke="#444444" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <polygon points="712.0,444.0 722.0,439.0 722.0,449.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="823.0" y="434.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="823.0" dy="0">[Found] studentData</tspan></text>
+
+
+  <line x1="712.0" y1="492.0" x2="1141.0" y2="492.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="1151.0,492.0 1141.0,487.0 1141.0,497.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="931.5" y="482.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="931.5" dy="0">getRecords(studentID)</tspan></text>
+
+
+  <line x1="1150.5" y1="548.0" x2="722.0" y2="548.0" stroke="#444444" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <polygon points="712.0,548.0 722.0,543.0 722.0,553.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="931.2" y="538.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="931.2" dy="0">recordList</tspan></text>
+
+
+  <line x1="712.0" y1="604.0" x2="1411.0" y2="604.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="1421.0,604.0 1411.0,599.0 1411.0,609.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="1066.5" y="586.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="1066.5" dy="0">create(studentData,</tspan><tspan x="1066.5" dy="16">recordList)</tspan></text>
+
+
+  <line x1="1421.0" y1="660.0" x2="47.5" y2="660.0" stroke="#444444" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <polygon points="37.5,660.0 47.5,655.0 47.5,665.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="729.2" y="650.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="729.2" dy="0">show 2B. Student Info Page</tspan></text>
+
+
+  <line x1="712.0" y1="716.0" x2="464.5" y2="716.0" stroke="#444444" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <polygon points="454.5,716.0 464.5,711.0 464.5,721.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="583.2" y="706.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="583.2" dy="0">success</tspan></text>
+
+
+  <line x1="37.5" y1="772.0" x2="1411.0" y2="772.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="1421.0,772.0 1411.0,767.0 1411.0,777.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="729.2" y="762.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="729.2" dy="0">click on an interview record</tspan></text>
+
+
+  <line x1="1421.0" y1="828.0" x2="722.0" y2="828.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="712.0,828.0 722.0,823.0 722.0,833.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="1066.5" y="818.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="1066.5" dy="0">getRecordDetail(recordID)</tspan></text>
+
+
+  <line x1="712.0" y1="884.0" x2="1141.0" y2="884.0" stroke="#444444" stroke-width="2.2"/>
+  <polygon points="1151.0,884.0 1141.0,879.0 1141.0,889.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="931.5" y="874.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="931.5" dy="0">fetchRecord(recordID)</tspan></text>
+
+
+  <line x1="1150.5" y1="940.0" x2="722.0" y2="940.0" stroke="#444444" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <polygon points="712.0,940.0 722.0,935.0 722.0,945.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="931.2" y="930.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="931.2" dy="0">recordDetail</tspan></text>
+
+
+  <line x1="712.0" y1="996.0" x2="1411.0" y2="996.0" stroke="#444444" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <polygon points="1421.0,996.0 1411.0,991.0 1411.0,1001.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="1066.5" y="986.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="1066.5" dy="0">return(recordDetail)</tspan></text>
+
+
+  <line x1="1421.0" y1="1052.0" x2="47.5" y2="1052.0" stroke="#444444" stroke-width="2.2" stroke-dasharray="7 6"/>
+  <polygon points="37.5,1052.0 47.5,1047.0 47.5,1057.0" fill="#444444" stroke="#444444" stroke-width="1"/>
+  <text x="729.2" y="1034.0" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#444444"><tspan x="729.2" dy="0">display interview record</tspan><tspan x="729.2" dy="16">detail</tspan></text>
+
+  <line x1="702.0" y1="1147.0" x2="722.0" y2="1167.0" stroke="#666666" stroke-width="2.2"/>
+  <line x1="722.0" y1="1147.0" x2="702.0" y2="1167.0" stroke="#666666" stroke-width="2.2"/>
+  <line x1="1411.0" y1="1147.0" x2="1431.0" y2="1167.0" stroke="#666666" stroke-width="2.2"/>
+  <line x1="1431.0" y1="1147.0" x2="1411.0" y2="1167.0" stroke="#666666" stroke-width="2.2"/>
+</svg>

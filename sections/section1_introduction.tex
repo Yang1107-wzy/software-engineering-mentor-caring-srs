@@ -1,0 +1,36 @@
+% Section 1: Introduction
+\section{Introduction}
+
+\subsection{Purpose}
+
+This document specifies the software requirements for the Mentor Caring System (MCS) V1.0 developed for the BNBU Mentor Caring Programme. It fully covers all core functional and non-functional requirements of the MCS, including the functional permissions of all role users, data interaction rules, system operation processes and basic interface requirements. This SRS is a complete specification for the entire MCS system and does not involve only a part or a single subsystem of the overall system, serving as the fundamental basis for the subsequent design, development, testing, and acceptance of the MCS.
+
+\subsection{Document Conventions}
+
+\begin{enumerate}
+\item \textbf{Font and Highlighting Conventions:} Key system roles (e.g., \textbf{Administrator}, \textbf{Faculty Consultant}), core functions (e.g., \textbf{Allocate Mentors}, \textbf{Generate Summary Report}) and special terms (e.g., \textbf{Mentor Caring System}, \textbf{MCS}) are marked in bold for emphasis; file formats (e.g., \textit{Excel}, \textit{Word}) and data fields (e.g., \textit{Student ID}, \textit{Group ID}) are marked in italic.
+
+\item \textbf{Requirement Priority Inheritance:} The priority of detailed functional requirements is inherited from the higher-level module requirements where they are located. The overall requirements of the MCS are divided into three priority levels: High (core and indispensable functions for the operation of the Mentor Caring Programme), Medium (auxiliary functional requirements for improving system usability), and Low (optimization requirements for functional experience, implementable in follow-up versions). If an individual detailed requirement has a different priority from its higher-level module, it will be marked independently in the corresponding section.
+
+\item \textbf{Numbering Conventions:} The document adopts a hierarchical numbering system (e.g., 1, 1.1, 1.1.1) for chapters, sections and specific requirements; functional goal serial numbers use Arabic numerals with parentheses (e.g., 1), and operational step serial numbers use lowercase Arabic numerals with periods (e.g., 1.).
+
+\item \textbf{Nomenclature Conventions:} The full name \textbf{Mentor Caring System} is used for the first mention in each chapter, followed by the abbreviation \textbf{MCS} for subsequent references; all role and function names are consistent with the definitions in the BNBU Mentor Caring Programme official description.
+\end{enumerate}
+
+\subsection{Intended Audience and Reading Suggestions}
+
+This document is intended for multiple stakeholders involved in the Mentor Caring System (MCS), including software developers, project managers, system testers, BNBU end users (administrators, faculty consultants, mentors, etc.), system maintainers and documentation writers.
+
+The remainder of this SRS is organized in a logical, hierarchical structure from overall system overview to detailed technical requirements. Chapter 2 presents the overall description of the product, including its perspective, core features, user classes, operating environment and key assumptions. Chapter 3 details the specific system features that realize the product's core functions. Chapter 4 specifies all external interface requirements, covering user, hardware, software and communications interfaces. Chapter 5 outlines nonfunctional requirements such as performance, safety, security and software quality attributes. Chapter 6 lists other supplementary requirements, and the appendices provide a glossary, analysis models and an issues list for reference.
+
+For a structured reading experience, all readers are recommended to start with Chapter 1 (Introduction) to grasp the basic background, purpose and scope of the MCS. End users may then focus on Chapter 2 (Overall Description) to understand the system's core features and role-based functions, and may skip the technical details in subsequent chapters. Developers and testers should read the full document in sequence, with key focus on Chapter 3 (System Features), Chapter 4 (External Interface Requirements) and Chapter 5 (Nonfunctional Requirements) to guide system design, development and testing. Project managers should prioritize Chapter 1, Chapter 2 and the priority of requirements across the document to plan project progress and resource allocation. Documentation writers and system maintainers should review the entire SRS, with additional attention to the appendices and detailed functional specifications to compile user manuals and support post-launch system maintenance.
+
+\subsection{Project Scope}
+
+The Mentor Caring System (MCS) is a dedicated supporting management system for BNBU's Mentor Caring Programme, which digitalizes the programme's management by realizing mentor allocation, interview record reporting, appointment arrangement, summary report generation and information tracking, and interfaces with the existing school database to assign differentiated permissions for all relevant roles, aligning with BNBU's goal of improving the informatization level of student management work.
+
+\subsection{References}
+
+\begin{enumerate}
+\item project description MCS long version [SE\_SDW\_Project Long Description 2025-2026-2 V.1.0]
+\end{enumerate}

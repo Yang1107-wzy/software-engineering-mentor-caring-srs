@@ -1,0 +1,56 @@
+% Section 5: Other Nonfunctional Requirements
+\section{Other Nonfunctional Requirements}
+
+\subsection{Performance Requirements}
+
+The Mentor Caring System must meet the following measurable performance requirements:
+
+\textbf{System Response Time:}
+
+The system shall return results for common user operations (including login verification, student/mentor information search, and message viewing) within 2 seconds under normal network conditions ($\leq$200 ms latency, stable campus network).
+
+\textbf{Concurrent Users:}
+
+The system shall support at least 300 concurrent users during peak usage periods (e.g., mentor allocation period at the beginning of the academic year) without performance degradation (i.e., response time shall not exceed 3 seconds for 95\% of requests).
+
+\textbf{File Import/Export Performance:}
+
+The system shall complete batch Excel file import (up to 1000 records per file) within 5 seconds, and generate/export Word reports (up to 100 pages) within 10 seconds under normal system load.
+
+\textbf{System Availability:}
+
+The system shall achieve at least 99\% uptime during normal academic operation periods (excluding scheduled maintenance), and any single system downtime shall not exceed 30 minutes.
+
+\subsection{Safety Requirements}
+
+No specific safety requirements are defined for the Mentor Caring System, as the system does not involve any hardware control or safety-critical operations.
+
+\subsection{Security Requirements}
+
+Security is critical for protecting sensitive academic and personal information stored in the Mentor Caring System.
+
+\textbf{User Authentication:} All users must log in using their BNBU university accounts verified through the school database.
+
+\textbf{Role-Based Access Control:} Access to system functions must be strictly controlled according to user roles (administrator, faculty consultant, mentor, student, MCP coordinator, supporting staff).
+
+\textbf{Data Privacy Protection:} Student personal information, interview records and communication messages must only be accessible to authorized users.
+
+\textbf{Secure Communication:} All login sessions and sensitive data transfers must use encrypted HTTPS connections.
+
+\textbf{Log Monitoring:} The system must record login and logout times and major user actions for auditing and security monitoring purposes.
+
+\subsection{Software Quality Attributes}
+
+The Mentor Caring System must satisfy several important software quality attributes:
+
+\textbf{Usability:} The web interface should be intuitive and easy to use so that users with basic computer skills can operate the system without extensive training.
+
+\textbf{Reliability:} The system should operate continuously with minimal failures and should recover gracefully from unexpected errors.
+
+\textbf{Maintainability:} The system architecture should follow modular design principles and include clear documentation and code comments to facilitate future maintenance.
+
+\textbf{Scalability:} The system should allow the addition of new faculties, departments and users without major structural modifications.
+
+\textbf{Portability:} The web-based architecture ensures that the system can run on multiple operating systems and browsers.
+
+\textbf{Testability:} Functional modules should be designed so that they can be independently tested during development and quality assurance.

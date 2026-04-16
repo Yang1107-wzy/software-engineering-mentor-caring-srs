@@ -1,0 +1,944 @@
+% Section 3: Use Case
+\section{Use Case}
+
+%--------------------------------------------------------------
+\subsection{Check Mentor Info}
+
+\subsubsection{Description and Priority}
+
+This feature enables a student to check the assigned mentor's information after logging into the system. The displayed information includes the mentor's basic profile relevant to the student's mentoring arrangement.
+
+Priority: Medium
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_1.pdf"}
+\caption{Transition diagram for Check Mentor Info}
+\label{fig:check-mentor-info}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: Student
+
+Assumption: The user has already logged into the system and is currently on the 1B. Home Page student.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The user clicks the ``Check Mentor Info'' button on the 1B. Home Page student.
+\item The system verifies that the student belongs to a mentor group.
+\item The system transitions to and displays the 3D. Mentor Info Page.
+\item The user views the assigned mentor's information.
+\end{enumerate}
+
+Alternative Flows:
+
+1a. If the student does not belong to any mentor group, the system does not enter the Mentor Info Page and displays a corresponding warning message.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow only a student belonging to a valid mentor group to access the mentor information page.
+
+REQ-2: The system shall display the assigned mentor's relevant information in read-only form.
+
+REQ-3: The system shall prevent the student from modifying any mentor information on this page.
+
+%--------------------------------------------------------------
+\subsection{Search Student's Info}
+
+\subsubsection{Description and Priority}
+
+This feature enables Mentor and MCP Coordinator to search for a student's full information in the system by inputting the unique student ID. The system will display the student's core information (including Student ID, Group ID, Mentor name, Faculty/Department/Major, and status) and all associated interview records of the student. This feature is a mandatory prerequisite for the ``Edit Interview Record'' function (3.3) for Mentors, and is the basic function for daily student information management for both roles.
+
+Priority: High
+
+\subsubsection{Stimulus/Response Sequences}
+
+Transition diagram is included in 3.3.2.
+
+Scenario:
+
+Actor: Mentor, MCP Coordinator
+
+Assumption: The user has successfully logged into the system.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The user selects the ``Search Student Info'' function.
+\item The system prompts the user to enter a Student ID.
+\item The user enters a valid Student ID and clicks ``Search''.
+\item The system retrieves the data and displays the student's detailed information and interview records.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If the Student ID does not exist, or if the user does not have permission, the system displays an error prompt.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall perform real-time format verification on the input student ID; if the format is invalid, the system shall reject the input at the backend.
+
+REQ-2: The system shall strictly restrict Mentors to only retrieve and view student information belonging to their own assigned mentoring group during their active duty period.
+
+REQ-3: The system shall restrict MCP Coordinators to only retrieve and view student information belonging to their own department.
+
+%--------------------------------------------------------------
+\subsection{Edit Interview Record}
+
+\subsubsection{Description and Priority}
+
+The mentor can click Edit to add, modify or delete the interview record. If the record exists, it can be modified or deleted; if empty, a new record can be entered.
+
+Priority: High
+
+Remark: Combined transition diagram for Search Student's Info (3.2) and Edit Interview Record (3.3). Coordinator can view the Student's info but cannot edit it; Mentor can do both.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{std_search_edit.png}
+\caption{Transition diagram for Search Student's Info and Edit Interview Record}
+\label{fig:search-edit-interview-record}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: Mentor
+
+Assumption: Search Student Info must be performed first. The mentor is currently in a student's info page.
+
+Main Success Scenario:
+\begin{enumerate}
+\setcounter{enumi}{4}
+\item The Mentor clicks the ``Edit'' button on the 2B. Student Info Page.
+\item The system transitions to the 2B2. Interview Record Form. If an interview record exists, the current text is displayed; if it is empty, blank input fields are displayed.
+\item The Mentor enters a new record, modifies the existing record, or deletes the record.
+\item The Mentor clicks the ``Save'' button.
+\item The system saves the changes and returns to the updated 2B. Student Info Page.
+\end{enumerate}
+
+Alternative Flows:
+
+4a. If the Mentor clicks ``Cancel'' instead of ``Save'', the system discards any changes and returns to the 2B. Student Info Page.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system backend must validate that all mandatory fields are not empty before executing the save command and writing the interview record into the database.
+
+REQ-2: The system must automatically append a hidden timestamp and the operator's Mentor ID to the database record every time an interview record is successfully created or modified, for backend tracking purposes.
+
+%--------------------------------------------------------------
+\subsection{Search Mentor's Info}
+
+\subsubsection{Description and Priority}
+
+Search for a mentor info, given a mentor's name, email address or group ID. The search result includes the mentor's name and ID of the group for which the mentor cares. The member list is displayed by clicking on the group ID. The record of a student is shown by selecting the name of the student in the member list.
+
+Priority: Low
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{std_search_mentor.png}
+\caption{Transition diagram for Search Mentor's Info}
+\label{fig:search-mentor-info}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: Faculty Consultant, Coordinator
+
+Assumption: The user has already logged into the system and is currently on the 2C. Search Mentors' Info Page.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The user enters a mentor name, email address or group ID on the 2C. Search Mentors' Info Page.
+\item The user clicks the ``Search'' button.
+\item The system searches for mentor information based on the input condition.
+\item The system displays the search results on the 2C. Search Mentors' Info Page, including the mentor's name and the list of group IDs.
+\item The user clicks a group ID.
+\item The system displays the student list of that group on the 2C1. Group Members Page.
+\item The user selects a student from the list.
+\item The system displays the record of the selected student on the 2B. Student Info Page.
+\end{enumerate}
+
+Alternative Flows:
+
+4a. If no matching mentor is found, the system informs the user that no matching result is found and asks the user to enter another search condition.
+
+6a. If there is no student in the selected group, the system displays an empty student list.
+
+8a. If the selected student has no record, the system informs the user that no record is available for that student.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall support flexible backend matching algorithms allowing searches using partial or complete input of mentor name, email address, or group ID.
+
+REQ-2: The system must retain and display all historical information of students when their records are accessed, even if they have been removed from a group or their mentor has changed.
+
+%--------------------------------------------------------------
+\subsection{Import Students' Name Lists}
+
+\subsubsection{Description and Priority}
+
+This feature enables a Faculty Consultant to import students' name lists into the system through an Excel file. The system validates the file format, previews the uploaded data and updates the database without overwriting existing records.
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Page_3_docsmall.com.jpg}
+\caption{Transition diagram for Faculty Consultant management functions}
+\label{fig:faculty-consultant-functions-import}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario 1: Import Students' Name Lists
+
+Actor: Faculty Consultant
+
+Assumption: The user has already logged into the system and is currently on the 1D. Home Page faculty consultants.
+
+Main Success Scenario:
+\begin{enumerate}
+\item User clicks the ``Import students' list'' button on the 1D. Home Page faculty consultants.
+\item System transitions to and displays the 2D. Import Data Page.
+\item User clicks ``Upload Excel'', selects a valid Excel file containing the students' name lists, and uploads it.
+\item System validates the file format (must be Excel) and displays a preview of the uploaded data in the display area.
+\item User clicks the ``Confirm Import'' button.
+\item System updates the database with new information without overwriting existing data, and displays a success message.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If the uploaded file is not in valid Excel format, the system displays a warning message and remains on the 2D. Import Data Page.
+
+4a. If the uploaded data contains invalid or incomplete records, the system marks the problematic entries and prevents final import until the errors are corrected.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall accept only Excel files conforming to the required import template.
+
+REQ-2: The system shall validate the uploaded file format before displaying a data preview.
+
+REQ-3: The system shall provide a preview of uploaded data before database update.
+
+REQ-4: The system shall update only non-existing information and shall not overwrite existing data.
+
+REQ-5: The system shall record each import operation in the system log.
+
+%--------------------------------------------------------------
+\subsection{Manage Mentor Group}
+
+\subsubsection{Description and Priority}
+
+This feature enables a Faculty Consultant to search for a mentor group, review group details, change the assigned mentor and save the updated group information while preserving historical data.
+
+Priority: High
+
+\subsubsection{Stimulus/Response Sequences}
+
+Transition diagram is included in 3.5.2.
+
+Scenario 2: Manage Mentor Group
+
+Actor: Faculty Consultant
+
+Assumption: The user has already logged into the system and is currently on the 1D. Home Page faculty consultants.
+
+Main Success Scenario:
+\begin{enumerate}
+\item User clicks the ``Manage mentor group'' button on the 1D. Home Page faculty consultants.
+\item System transitions to and displays the 2E. Manage Mentor Group Page.
+\item User enters a valid Group ID in the text input field and clicks the ``Search Group'' button.
+\item System retrieves and displays the group details, including the current mentor and the student member list.
+\item User selects a new mentor from the dropdown list and clicks the ``Change Mentor'' button.
+\item System temporarily updates the mentor selection on the interface.
+\item User clicks the ``Save Changes'' button.
+\item System saves the changes to the database while permanently retaining all historical information of the students and displays a success confirmation.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If the Group ID is invalid or does not exist, the system displays a warning message and remains on the 2E. Manage Mentor Group Page.
+
+5a. If the selected mentor is not eligible for the group, the system rejects the change and displays an error message.
+
+5b. User clicks the ``Add/Remove Student'' button to add a new student to or remove an existing student from the group.
+
+6b. System temporarily updates the member list on the interface.
+
+5c. If the user attempts to add a student who does not exist in the system, the system displays a warning.
+
+7a. If the user leaves the page without saving, the system discards temporary changes.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow only Faculty Consultants to manage mentor groups within their permitted scope.
+
+REQ-2: The system shall support searching groups by Group ID and displaying group details.
+
+REQ-3: The system shall allow Faculty Consultants to change the assigned mentor of a group.
+
+REQ-4: The system shall preserve all historical student and mentor allocation information after each saved adjustment.
+
+REQ-5: The system shall save only confirmed changes to the database.
+
+%--------------------------------------------------------------
+\subsection{Designate Coordinators}
+
+\subsubsection{Description and Priority}
+
+This feature enables a Faculty Consultant to search for a valid staff member and assign the MCP Coordinator role.
+
+Priority: High
+
+\subsubsection{Stimulus/Response Sequences}
+
+Transition diagram is included in 3.5.2.
+
+Scenario 3: Designate Coordinators
+
+Actor: Faculty Consultant
+
+Assumption: The user has already logged into the system and is currently on the 1D. Home Page faculty consultants.
+
+Main Success Scenario:
+\begin{enumerate}
+\item User clicks the ``Designate coordinator'' button on the 1D. Home Page faculty consultants.
+\item System transitions to and displays the 2F. Designate Coordinator Page.
+\item User enters a valid Staff ID or Name in the search field and clicks the ``Search Staff'' button.
+\item System retrieves and displays the staff member's basic information.
+\item User clicks the ``Assign Role'' button.
+\item System updates the staff member's role permissions to MCP Coordinator in the database and displays a success message.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If the entered Staff ID or Name is invalid or no matching staff member is found, the system displays a warning message.
+
+5a. If the staff member is outside the Faculty Consultant's permitted scope, the system denies the role assignment and displays an authorization error.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow only Faculty Consultants to designate MCP Coordinators.
+
+REQ-2: The system shall validate that the searched staff member exists and is within the permitted scope.
+
+REQ-3: The system shall update the selected staff member's role to MCP Coordinator after a valid assignment.
+
+REQ-4: The system shall record the role assignment action in the system log.
+
+%--------------------------------------------------------------
+\subsection{Export Records}
+
+\subsubsection{Description and Priority}
+
+This feature enables a Mentor or Faculty Consultant to export records based on selected criteria into a Microsoft Word file.
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_2.pdf"}
+\caption{Detailed transition diagram for Export Records}
+\label{fig:export-records-detail}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario 4: Export Records
+
+Actor: Mentor or Faculty Consultant
+
+Assumption: The user has already logged into the system and is currently on their respective Home Page (1A or 1D).
+
+Main Success Scenario:
+\begin{enumerate}
+\item User clicks the ``Export records'' button on their Home Page.
+\item System transitions to and displays the 2G. Export Records Page.
+\item User selects the valid Academic Year and Department from the dropdown boxes, optionally enters Mentor Name and/or Student Name, and clicks the ``Generate Document'' button.
+\item System compiles the requested interview records and information into a Microsoft Word file format and triggers the file download.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If required criteria are missing, the system displays a warning message and remains on the 2G. Export Records Page.
+
+4a. If the system encounters an internal error during document generation, it displays an error message and prompts the user to try again later.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow only authorized users to export records within their permitted scope.
+
+REQ-2: The system shall support filtering exported records by Academic Year, Department, Mentor Name, and Student Name.
+
+REQ-3: The system shall generate the export file in Microsoft Word format.
+
+REQ-4: The system shall stop export and display a warning if required criteria are missing.
+
+REQ-5: The system shall log each export operation for auditing purposes.
+
+%--------------------------------------------------------------
+\subsection{Communicate}
+
+\subsubsection{Description and Priority}
+
+This feature enables a Faculty Consultant, Mentor, MCP Coordinator or Student to send messages through the system and trigger an automatic email notification to the receiver.
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Page_5_docsmall.com.png}
+\caption{Overview transition diagram for Communication and Give Feedback}
+\label{fig:communicate-overview}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_3a.pdf"}
+\caption{Detailed transition diagram for Send Message}
+\label{fig:communicate-detail}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario 5: Communicate
+
+Actor: Faculty Consultant (or Mentor/Coordinator/Student)
+
+Assumption: The user has already logged into the system and is currently on their Home Page.
+
+Main Success Scenario:
+\begin{enumerate}
+\item User clicks the ``Communicate'' button on their Home Page.
+\item System transitions to and displays the 3A. Message Center Page, showing the list of existing conversations.
+\item User clicks on an existing conversation or clicks ``New Message''.
+\item If an existing conversation is selected, the system displays the 3A1. Conversation Page with the message history.
+\item If ``New Message'' is clicked, the system displays the 3A2. New Message Page.
+\item On the 3A1. Conversation Page, user enters a message and clicks ``Send''.
+\item On the 3A2. New Message Page, user selects a receiver from the list, enters a message, and clicks ``Send''.
+\item System saves the message to the database, triggers an automatic email notification to the receiver via the BNBU email server, and displays a success message.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If there are no existing conversations, the 3A. Message Center Page displays an empty list with an option to create a new message.
+
+6a. If the message content is empty on 3A1. Conversation Page, the system displays a validation error and does not send the message.
+
+7a. If the receiver is not selected on 3A2. New Message Page or the message content is empty, the system displays a validation error and does not send the message.
+
+8a. If the email notification fails, the system still saves the message in the database but displays a warning that the email notification failed.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow authorized users to send messages to permitted receivers according to role permissions.
+
+REQ-2: The system shall display a list of existing conversations on the 3A. Message Center Page.
+
+REQ-3: The system shall allow users to view message history in the 3A1. Conversation Page.
+
+REQ-4: The system shall allow users to create new messages via the 3A2. New Message Page.
+
+REQ-5: The system shall validate that the receiver is selected and the message content is not empty on the appropriate page.
+
+REQ-6: The system shall save successfully submitted messages in the database.
+
+REQ-7: The system shall trigger an automatic email notification after a message is saved.
+
+REQ-8: The system shall notify the sender if email delivery fails while the internal message is saved successfully.
+
+%--------------------------------------------------------------
+\subsection{Make Appointment}
+
+\subsubsection{Description and Priority}
+
+This feature enables a Mentor to create interview appointment requests for students and enables the student to confirm a selected time slot.
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_3b.pdf"}
+\caption{Transition diagram for Make Appointment}
+\label{fig:make-appointment}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: Mentor (Main), Student (Secondary)
+
+Assumption: Mentor has logged in and is on 1A. Home Page mentor.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The Mentor clicks ``Make Appointment'' on the Home Page.
+\item The system displays the 3B. Make Appointment Page with student selection and time slot options.
+\item The Mentor selects a student and marks available 30-minute time slots.
+\item The Mentor clicks ``Send Request''.
+\item The system sends the request and waits for student response.
+\item The student logs in, opens the 3B2. Select Time Slot Page, selects one slot and clicks ``Confirm''.
+\item The system notifies the Mentor.
+\item The Mentor opens the 3B1. Appointment Confirmation Page, enters the meeting location and clicks ``Confirm''.
+\item The system finalizes the appointment and notifies both parties.
+\end{enumerate}
+
+Alternative Flows:
+
+4a. If no student or no time slot is selected, the system displays an error.
+
+6a. If the student clicks ``Decline'', the system notifies the Mentor and cancels the request.
+
+8a. If the Mentor clicks ``Confirm'' without entering a meeting location, the system displays an error.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow Mentors to create appointment requests only for students in their own groups.
+
+REQ-2: The system shall support fixed 30-minute appointment slots only.
+
+REQ-3: The system shall require at least one available slot before sending the request.
+
+REQ-4: The system shall allow the student to confirm only one offered slot.
+
+REQ-5: The system shall require a non-empty meeting location before final confirmation.
+
+%--------------------------------------------------------------
+\subsection{Mentor Forwards a Case}
+
+\subsubsection{Description and Priority}
+
+This feature enables a Mentor to forward a special student case to the designated MCP Coordinator.
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_4a.pdf"}
+\caption{Transition diagram for Mentor Forwards a Case}
+\label{fig:mentor-forwards-case}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: Mentor
+
+Assumption: The user has logged in and is on 1A. Home Page mentor.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The user clicks ``Forward Cases'' on the Home Page.
+\item The system displays the 3C. Forward Case Page.
+\item The user selects a student from the list.
+\item The user enters the case description.
+\item The user clicks ``Forward''.
+\item The system forwards the case to the Coordinator and triggers email notification.
+\end{enumerate}
+
+Alternative Flows:
+
+5a. If no student is selected or no description is entered, the system displays an error.
+
+6a. If email notification fails, the system still forwards the case internally but displays a warning.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow Mentors to forward cases only for students in their own groups.
+
+REQ-2: The system shall require a selected student and non-empty case description.
+
+REQ-3: The system shall route the case to the designated MCP Coordinator.
+
+REQ-4: The system shall save the case content, sender identity and submission time.
+
+%--------------------------------------------------------------
+\subsection{Coordinator Forwards to Faculty Consultant}
+
+\subsubsection{Description and Priority}
+
+This feature enables an MCP Coordinator to review received cases and forward selected cases to the Faculty Consultant.
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_4b.pdf"}
+\caption{Transition diagram for Coordinator Forwards to Faculty Consultant}
+\label{fig:coordinator-forwards-case}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: MCP Coordinator
+
+Assumption: The user has logged in and is on 1C. Home Page Coordinator.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The user clicks ``Forward Cases'' on the Home Page.
+\item The system displays the 3C1. Received Cases Page (Coordinator).
+\item The user clicks a received case to view its details.
+\item The system displays the case detail message box.
+\item The user selects the case and clicks ``Forward to Faculty Consultant''.
+\item The system sends the case to the Faculty Consultant and triggers email notification.
+\end{enumerate}
+
+Alternative Flows:
+
+5a. If no case is selected, the system displays an error.
+
+2a. If there are no received cases, the system displays an empty list message.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow an MCP Coordinator to view only cases belonging to the Coordinator's department.
+
+REQ-2: The system shall display case details before forwarding.
+
+REQ-3: The system shall require a selected case before forwarding to the Faculty Consultant.
+
+REQ-4: The system shall notify the Faculty Consultant after successful forwarding.
+
+%--------------------------------------------------------------
+\subsection{User Gives Feedback}
+
+\subsubsection{Description and Priority}
+
+This feature enables users to submit feedback, suggestions or bug reports through the system.
+
+Priority: Medium
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Page_5_docsmall.com.png}
+\caption{Overview transition diagram for Communication and Give Feedback}
+\label{fig:feedback-overview}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_5.pdf"}
+\caption{Transition diagram for User Gives Feedback}
+\label{fig:user-gives-feedback}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: User (e.g., Mentor, Student, Coordinator, Faculty Consultant)
+
+Assumption: The user has successfully logged into the system and is on the relevant Home Page.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The user clicks ``Give Feedback'' on the Home Page.
+\item The system displays the 3E. Give Feedback Page.
+\item The user enters feedback text.
+\item The user clicks ``Submit''.
+\item The system validates the input and saves the feedback.
+\item The system displays a success confirmation and returns the user to the Home Page.
+\end{enumerate}
+
+Alternative Flows:
+
+4a. If the user clicks ``Submit'' with empty content, the system displays an error message and remains on the 3E. Give Feedback Page.
+
+4b. If the user clicks ``Cancel'' or ``Home'', the system discards any draft content and returns to the Home Page.
+
+3a. If there are no feedback entries, the system displays an empty list message.
+
+6a. If the reply fails due to a system error, the system displays an error message and allows retry.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall provide a feedback submission interface for all logged-in user roles.
+
+REQ-2: The system shall validate that feedback content is not empty before saving.
+
+REQ-3: The system shall store the feedback together with user identity, role and submission time.
+
+REQ-4: The system shall make submitted feedback available to Supporting Staff for later review.
+
+%--------------------------------------------------------------
+\subsection{View Log Info}
+
+\subsubsection{Description and Priority}
+
+This feature enables Supporting Staff to search and view system log information within a selected date range.
+
+Priority: Medium
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{Page_6_docsmall.com.jpg}
+\caption{Overview transition diagram for Supporting Staff functions}
+\label{fig:view-log-overview}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario 6: View Log Info
+
+Actor: Supporting Staff
+
+Assumption: The user has already logged into the system and is currently on the 1E. Home Page supporting staff.
+
+Main Success Scenario:
+\begin{enumerate}
+\item User clicks the ``View log info'' button on the 1E. Home Page supporting staff.
+\item System transitions to and displays the 4A. View System Logs Page.
+\item User selects a valid Start Date and End Date, then clicks the ``Search logs'' button.
+\item System retrieves the relevant login/logout times and core function usage logs and displays them in the list area.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If the selected date range is invalid, the system displays a warning message and remains on the 4A. View System Logs Page.
+
+4a. If no logs match the selected criteria, the system displays an empty result list with a corresponding notice.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow Supporting Staff to search logs by date range.
+
+REQ-2: The system shall display login/logout records and core function usage logs.
+
+REQ-3: The system shall prevent unauthorized modification or deletion of log data through the viewing interface.
+
+%--------------------------------------------------------------
+\subsection{Reply to Users' Questions}
+
+\subsubsection{Description and Priority}
+
+This feature enables Supporting Staff to review feedback entries and reply to users' questions through the system.
+
+Priority: Medium
+
+\subsubsection{Stimulus/Response Sequences}
+
+Transition diagram is included in 3.14.2.
+
+Scenario 7: Reply to Users' Questions
+
+Actor: Supporting Staff
+
+Assumption: The user has already logged into the system and is currently on the 1E. Home Page supporting staff.
+
+Main Success Scenario:
+\begin{enumerate}
+\item User clicks the ``Reply users' questions'' button on the 1E. Home Page supporting staff.
+\item System transitions to and displays the 4B. Reply Feedback Page.
+\item User selects a specific feedback entry from the Feedback List.
+\item System displays the original user feedback text in the read-only display area.
+\item User types a reply in the text editing area and clicks the ``Send Reply'' button.
+\item System saves the response, updates the status of the feedback, and notifies the user who submitted the feedback.
+\end{enumerate}
+
+Alternative Flows:
+
+5a. If the reply content is empty, the system displays a validation error and does not send the reply.
+
+3a. If there are no feedback entries, the system displays an empty list message.
+
+6a. If the reply fails due to a system error, the system displays an error message and allows retry.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow Supporting Staff to access feedback entries submitted by users.
+
+REQ-2: The system shall display the original feedback text in read-only form.
+
+REQ-3: The system shall validate that reply content is not empty before sending.
+
+REQ-4: The system shall save each reply together with responder identity and response time.
+
+REQ-5: The system shall notify the user after a reply is successfully sent.
+
+%--------------------------------------------------------------
+\subsection{Set up Faculty Consultants}
+
+\subsubsection{Description and Priority}
+
+This feature enables the Administrator to add, modify or delete faculty consultants for each faculty in the system. The Administrator can search for staff members and assign them as faculty consultants for a specific faculty (FST, FHSS, FSM, DCC, or any newly added faculty).
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_6.pdf"}
+\caption{Transition diagram for Set up Faculty Consultants}
+\label{fig:setup-faculty-consultants}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: Administrator
+
+Assumption: The user has already logged into the system and is currently on the 4C. Admin Home Page.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The user clicks the ``Set up Faculty Consultants'' button on the 4C. Admin Home Page.
+\item The system transitions to and displays the 4D. Set up Faculty Consultants Page, showing the current list of faculty consultants grouped by faculty.
+\item The user selects a faculty from the dropdown and enters a Staff Name or ID in the search field, then clicks ``Search''.
+\item The system retrieves and displays the staff member's basic information.
+\item The user clicks the ``Save'' button.
+\item The system assigns the staff member as the faculty consultant for the selected faculty, updates the database, and displays a success message.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If the entered Staff Name or ID is invalid or not found, the system displays a warning message and remains on the 4D page.
+
+5a. If the selected staff member is already assigned as a consultant for another faculty, the system displays a confirmation dialog before proceeding.
+
+2a. The user clicks ``Edit'' or ``Delete'' next to an existing consultant entry to modify or remove the assignment.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow only the Administrator to add, modify or delete faculty consultant assignments.
+
+REQ-2: The system shall display the current list of faculty consultants grouped by faculty.
+
+REQ-3: The system shall validate that the searched staff member exists in the BNBU school database.
+
+REQ-4: The system shall record each faculty consultant assignment change in the system log.
+
+REQ-5: The system shall support assigning one or more faculty consultants per faculty.
+
+%--------------------------------------------------------------
+\subsection{Set up Faculties and Departments}
+
+\subsubsection{Description and Priority}
+
+This feature enables the Administrator to configure the organizational architecture of BNBU, including faculties, departments and majors. The configuration can be done either manually through the system interface or by importing an Excel file (Appendix A format).
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_7.pdf"}
+\caption{Transition diagram for Set up Faculties and Departments}
+\label{fig:setup-faculties-departments}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: Administrator
+
+Assumption: The user has already logged into the system and is currently on the 4C. Admin Home Page.
+
+Main Success Scenario (Manual Entry):
+\begin{enumerate}
+\item The user clicks the ``Set up Faculties and Departments'' button on the 4C. Admin Home Page.
+\item The system transitions to and displays the 4E. Set up Faculties, Departments and Majors Page, showing the current organizational structure.
+\item The user enters a Faculty Name, Department Name and Major Name in the respective input fields.
+\item The user clicks the ``Save'' button.
+\item The system validates the input and adds the new entry to the organizational structure, displaying a success message.
+\end{enumerate}
+
+Alternative Scenario (Excel Import):
+\begin{enumerate}
+\item The user clicks the ``Set up Faculties and Departments'' button on the 4C. Admin Home Page.
+\item The system transitions to and displays the 4E. Set up Faculties, Departments and Majors Page.
+\item The user clicks ``Upload Excel'' and selects a valid Excel file conforming to Appendix A format.
+\item The system validates the file format and previews the uploaded data.
+\item The user clicks ``Confirm Import''.
+\item The system updates the organizational structure without overwriting existing data and displays a success message.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If the user enters a Faculty/Department/Major name that already exists, the system displays a warning message.
+
+3c. If the uploaded file is not in valid Excel format, the system displays a warning message and remains on the 4E page.
+
+2a. The user clicks ``Edit'' or ``Delete'' next to an existing entry to modify or remove it.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow only the Administrator to configure the organizational architecture.
+
+REQ-2: The system shall support both manual entry and Excel file import (Appendix A format) for configuring faculties, departments and majors.
+
+REQ-3: The system shall display the current organizational structure in a viewable format.
+
+REQ-4: The system shall validate that no duplicate entries are created.
+
+REQ-5: The system shall support the dynamic addition of new faculties without modifying the core system code.
+
+REQ-6: The system shall not overwrite existing organizational data when importing from Excel; only non-existing information is updated.
+
+REQ-7: The system shall record each organizational structure change in the system log.
+
+%--------------------------------------------------------------
+\subsection{Set up Supporting Staff}
+
+\subsubsection{Description and Priority}
+
+This feature enables the Administrator to search for a staff member in the BNBU school database and assign the Supporting Staff role to that person.
+
+Priority: High
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{"Figure 2_8.pdf"}
+\caption{Transition diagram for Set up Supporting Staff}
+\label{fig:setup-supporting-staff}
+\end{figure}
+
+\subsubsection{Stimulus/Response Sequences}
+
+Scenario:
+
+Actor: Administrator
+
+Assumption: The user has already logged into the system and is currently on the 4C. Admin Home Page.
+
+Main Success Scenario:
+\begin{enumerate}
+\item The user clicks the ``Set up Supporting Staff'' button on the 4C. Admin Home Page.
+\item The system transitions to and displays the 4F. Set up Supporting Staff Page, showing the current supporting staff member (if any).
+\item The user enters a Staff ID or Name in the search field and clicks ``Search''.
+\item The system retrieves and displays the staff member's basic information from the BNBU school database.
+\item The user clicks the ``Assign as Supporting Staff'' button.
+\item The system updates the staff member's role to Supporting Staff in the database and displays a success message.
+\end{enumerate}
+
+Alternative Flows:
+
+3a. If the entered Staff ID or Name is invalid or not found in the school database, the system displays a warning message.
+
+5a. If a Supporting Staff member is already assigned, the system asks for confirmation before replacing.
+
+2a. The user clicks ``Remove'' next to the current supporting staff entry to revoke the role assignment.
+
+\subsubsection{Functional Requirements}
+
+REQ-1: The system shall allow only the Administrator to assign or remove the Supporting Staff role.
+
+REQ-2: The system shall search for staff members from the BNBU school database by Staff ID or Name.
+
+REQ-3: The system shall display the current supporting staff assignment.
+
+REQ-4: The system shall update the staff member's role permissions after a valid assignment.
+
+REQ-5: The system shall record each supporting staff assignment change in the system log.

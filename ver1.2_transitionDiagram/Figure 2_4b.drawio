@@ -1,0 +1,70 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram name="第 1 页" id="cuiLqc_uIDWCZXtE3GTb">
+    <mxGraphModel dx="1095" dy="598" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-88" edge="1" parent="1" source="ZyDkEYpYwIdJMWPjE9Xh-89" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ZyDkEYpYwIdJMWPjE9Xh-95" value="">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="190" y="80" />
+              <mxPoint x="190" y="80" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-89" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="1C. Home Page Coordinator" vertex="1">
+          <mxGeometry height="60" width="120" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-90" connectable="0" parent="1" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Clicks &quot;Forward Cases&quot;" vertex="1">
+          <mxGeometry x="250" y="70" as="geometry">
+            <mxPoint x="23" y="-1" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-91" edge="1" parent="1" source="ZyDkEYpYwIdJMWPjE9Xh-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ZyDkEYpYwIdJMWPjE9Xh-89">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-92" connectable="0" parent="ZyDkEYpYwIdJMWPjE9Xh-91" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Click Home" vertex="1">
+          <mxGeometry relative="1" x="-0.0489" y="4" as="geometry">
+            <mxPoint x="-2" y="-4" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-93" edge="1" parent="1" source="ZyDkEYpYwIdJMWPjE9Xh-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ZyDkEYpYwIdJMWPjE9Xh-89">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="200" y="120" />
+              <mxPoint x="200" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-94" connectable="0" parent="ZyDkEYpYwIdJMWPjE9Xh-93" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Select Case &amp;amp; Click &quot;Forward to Faculty Consultant&quot;&lt;div&gt;[Valid]&lt;div&gt;/ Case Sent, Email Notification&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry relative="1" x="0.1104" y="-1" as="geometry">
+            <mxPoint x="22" y="31" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-95" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="3C1. Received Cases Page (Coordinator)" vertex="1">
+          <mxGeometry height="60" width="120" x="408.25" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-96" edge="1" parent="1" source="ZyDkEYpYwIdJMWPjE9Xh-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;elbow=vertical;" target="ZyDkEYpYwIdJMWPjE9Xh-95">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="498.25" y="160" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-97" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Click a Received Case / View Case Detail (Message Box)" vertex="1">
+          <mxGeometry height="30" width="123.5" x="408.25" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-98" edge="1" parent="1" source="ZyDkEYpYwIdJMWPjE9Xh-95" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="ZyDkEYpYwIdJMWPjE9Xh-95">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="498.25" y="50" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ZyDkEYpYwIdJMWPjE9Xh-99" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Click &quot;Forward to Faculty Consultant&quot; [No Case Selected] / Show Error" vertex="1">
+          <mxGeometry height="30" width="140" x="400" y="10" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

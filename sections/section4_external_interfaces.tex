@@ -1,0 +1,40 @@
+% Section 4: External Interface Requirements
+\section{External Interface Requirements}
+
+\subsection{User Interfaces}
+
+Please refer to the separate document named `B04 Section3 UI\_Diagrams.pdf' for all user interface designs corresponding to the state transition diagrams.
+
+\subsection{Hardware Interfaces}
+
+The Mentor Caring System primarily operates on standard computing equipment and does not require any specialized hardware devices.
+
+Users shall interact with the system through ordinary personal computers or laptops using common input and output devices such as keyboards, mice, and displays.
+
+On the server side, the system shall be hosted on standard server hardware that supports the execution of the web application, storage of system data, and communication with external university services. The system shall also rely on normal network infrastructure to enable communication between client devices, the MCS server, the BNBU school database, and the BNBU email service.
+
+The system does not directly control or manipulate external hardware devices. All hardware interaction shall be limited to ordinary web-based input, display, storage, and network communication functions. This is aligned with the project description, which presents MCS as a supporting management system rather than a hardware control system.
+
+\subsection{Software Interfaces}
+
+The Mentor Caring System interacts with several external software components that support its operation:
+
+\textbf{BNBU School Database System:} Provides user authentication information including account ID, password, user name and role type. The MCS accesses this database in read-only mode for login verification.
+
+\textbf{Relational Database Management System:} The system stores its operational data (mentor allocation, interview records, communication messages and logs) in a dedicated database such as MySQL 8.0 or Microsoft SQL Server 2019.
+
+\textbf{Web Server Software:} Application deployment is supported by web servers such as Nginx or Apache Tomcat, which manage HTTP requests, session management and application service execution.
+
+\textbf{Email Server System:} The BNBU email server is used to send automatic notification emails whenever a system message or interview appointment is created.
+
+\textbf{Office Software Integration:} Microsoft Excel is used for importing structured data such as student lists and mentor allocations, while Microsoft Word is used for exporting reports and interview records.
+
+\subsection{Communications Interfaces}
+
+The Mentor Caring System relies on standard network communication technologies to support user access and system messaging:
+
+\textbf{Web Communication:} Users shall access the system interfaces through a standard secure web network connection (such as HTTPS).
+
+\textbf{Email Notification Service:} The system shall communicate with the BNBU email service using standard mail transport protocols to automatically send notifications to the receiving parties.
+
+\textbf{Network Access:} Internal users can access the system via the BNBU campus network, while external access shall rely on the university's existing secure network access arrangements (such as a campus VPN).
